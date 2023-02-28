@@ -5,24 +5,23 @@ import Points.Point2D;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class InterpolatorArrayList extends Interpolator {
+public class ArrayListInterpolator extends Interpolator {
 
     private ArrayList<Point2D> list;
 
-    public InterpolatorArrayList() {
+    public ArrayListInterpolator() {
         this.list = new ArrayList<Point2D>();
     }
 
-    public InterpolatorArrayList(ArrayList<Point2D> list) {
+    public ArrayListInterpolator(ArrayList<Point2D> list) {
         this.list = list;
     }
 
-    public InterpolatorArrayList(Point2D[] list) {
+    public ArrayListInterpolator(Point2D[] list) {
         this();
 
-        // TODO
         for (Point2D point : list) {
-//            this.list.add
+            pushPoint(point);
         }
     }
 
@@ -39,7 +38,7 @@ public class InterpolatorArrayList extends Interpolator {
         }
 
         if (index == list.size()) {
-            // TODO: addPoint
+            pushPoint(point2D);
             return true;
         }
 
