@@ -1,6 +1,6 @@
 public abstract class Point {
 
-    double[] coords = null;
+    double[] coords;
 
     public Point(int size) {
         this.coords = new double[size];
@@ -24,6 +24,9 @@ public abstract class Point {
             stringBuilder.append(coord);
             stringBuilder.append(", ");
         }
+
+        int length = stringBuilder.length();
+        stringBuilder.delete(length - 2, length);
 
         stringBuilder.append(")");
 
