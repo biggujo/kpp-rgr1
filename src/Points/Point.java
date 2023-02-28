@@ -1,3 +1,5 @@
+package Points;
+
 public abstract class Point {
 
     double[] coords;

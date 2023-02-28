@@ -1,6 +1,7 @@
+package Functions;
+
 import Interfaces.Evaluatable;
 
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 

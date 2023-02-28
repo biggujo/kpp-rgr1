@@ -1,6 +1,7 @@
 package Interpolation;
 
 import Interfaces.Evaluatable;
+import Points.Point2D;
 
 public abstract class Interpolator implements Evaluatable {
 
