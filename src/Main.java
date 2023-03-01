@@ -1,12 +1,27 @@
-import Points.Point2D;
+import edu.hws.jcm.data.Expression;
+import edu.hws.jcm.data.Parser;
+import edu.hws.jcm.data.Variable;
+
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Parser parser = new Parser(Parser.STANDARD_FUNCTIONS);
 
-        Point2D firstPoint = new Point2D(2, 3);
-        Point2D secondPoint = new Point2D(3, 2);
+        Variable varX = new Variable("x");
+//        Variable varA = new Variable("a");
 
-        System.out.println(firstPoint.compareTo(secondPoint));
+        parser.add(varX);
+//        parser.add(varA);
+
+        String myInput = in.next();
+
+        Expression functionParsed = parser.parse(myInput);
+        Expression derivativeParsed = functionParsed.derivative(varX);
+
+        System.out.println("Parsed function: " + functionParsed);
+        System.out.println("Derivative: " + derivativeParsed);
     }
 }
