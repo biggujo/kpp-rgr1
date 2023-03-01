@@ -44,7 +44,7 @@ public class Point2D extends Point implements Comparable<Point2D> {
 
         // Set locale
         DecimalFormatSymbols localeUS = new DecimalFormatSymbols(Locale.US);
-        DecimalFormat decimalFormat = new DecimalFormat("#.##", localeUS);
+        DecimalFormat decimalFormat = new DecimalFormat("#.######", localeUS);
 
         for (int i = 0; i < 5; i++) {
             double randX = Double.parseDouble(decimalFormat.format(Math.random()));

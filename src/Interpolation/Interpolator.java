@@ -21,20 +21,25 @@ public abstract class Interpolator implements Evaluatable {
 
     @Override
     public double evalf(double x) {
-        double res = 0.0;
+        double result = 0;
+        double number;
+        double denom;
+
         int numData = pointsAmount();
-        double numer, denom;
-        for (int k = 0; k < numData; k++) {
-            numer = 1.0;
-            denom = 1.0;
+        for (int i = 0; i < numData; i++) {
+            number = 1;
+            denom = 1;
+
             for (int j = 0; j < numData; j++) {
-                if (j != k) {
-                    numer = numer * (x - getPoint(j).getX());
-                    denom = denom * (getPoint(k).getX() - getPoint(j).getX());
+
+                if (j != i) {
+                    number = number * (x - getPoint(j).getX());
+                    denom = denom * (getPoint(i).getX() - getPoint(j).getX());
                 }
             }
-            res = res + getPoint(k).getY() * numer / denom;
+            
+            result = result + getPoint(i).getY() * number / denom;
         }
-        return res;
+        return result;
     }
 }
