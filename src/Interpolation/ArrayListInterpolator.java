@@ -2,7 +2,6 @@ package Interpolation;
 
 import Points.Point2D;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -73,7 +72,7 @@ public class ArrayListInterpolator extends Interpolator {
     }
 
     public static void main(String[] args) {
-        FileArrayListInterpolator interpolator = new FileArrayListInterpolator();
+        ArrayListInterpolator interpolator = new FileArrayListInterpolator();
         Scanner in = new Scanner(System.in);
 
         // Set locale
@@ -101,7 +100,7 @@ public class ArrayListInterpolator extends Interpolator {
         for (int i = 0; i < amountOfPoints; i++) {
             System.out.println(interpolator.getPoint(i));
         }
-        
+
         int newAmount = interpolator.pointsAmount();
 
         double minX = interpolator.getPoint(0).getX();
