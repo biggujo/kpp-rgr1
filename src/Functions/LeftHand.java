@@ -2,6 +2,9 @@ package Functions;
 
 import Interfaces.Evaluatable;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -30,7 +33,7 @@ public class LeftHand implements Evaluatable {
         this.a = a;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         LeftHand function = new LeftHand();
 
@@ -40,24 +43,6 @@ public class LeftHand implements Evaluatable {
         System.out.println("1.0 / Math.pow(Math.cosh(x), 2) - a * x");
 
         System.out.println("Test 1");
-
-        System.out.println("Please, enter new x:");
-        double x = in.nextDouble();
-        System.out.println("Please, enter new a_min:");
-        double aMin = in.nextDouble();
-        System.out.println("Please, enter new a_max:");
-        double aMax = in.nextDouble();
-        System.out.println("Please, enter new a_step:");
-        double aStep = in.nextDouble();
-
-        System.out.println("x = " + x);
-
-        for (double a = aMin; a <= aMax; a += aStep) {
-            function.setA(a);
-            System.out.printf("a = %f, res = %f\n", function.getA(), function.evalf(x));
-        }
-
-        System.out.println("Test 2");
 
         System.out.println("Please, enter new a:");
         double a = in.nextDouble();
@@ -71,8 +56,13 @@ public class LeftHand implements Evaluatable {
         System.out.println("a = " + a);
         function.setA(a);
 
+        PrintWriter out = new PrintWriter(new FileWriter("LeftHand_A=" + a + ".dat"));
+        out.println("x,y");
         for (double xCur = xMin; xCur <= xMax; xCur += xStep) {
-            System.out.printf("x = %f, res = %f\n", xCur, function.evalf(x));
+            double curResult = function.evalf(xCur);
+            System.out.printf("x = %f, res = %f\n", xCur, function.evalf(xCur));
+            out.printf("%f,%f\n", xCur, curResult);
         }
+        out.close();
     }
 }
