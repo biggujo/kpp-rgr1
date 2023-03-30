@@ -33,11 +33,11 @@ public class TreeMapInterpolator extends Interpolator {
         }
 
         Iterator<Map.Entry<Double, Double>> iterator = map.entrySet().iterator();
-        for (int i = 0; iterator.hasNext() && i <= index; i++) {
+        for (int i = 0; iterator.hasNext() && i < index; i++) {
             iterator.next();
         }
 
-        Map.Entry<Double, Double> returnEntry = map.firstEntry();
+        Map.Entry<Double, Double> returnEntry = iterator.next();
 
         return new Point2D(returnEntry.getKey(), returnEntry.getValue());
     }
@@ -71,7 +71,7 @@ public class TreeMapInterpolator extends Interpolator {
     }
 
     public static void main(String[] args) {
-        ArrayListInterpolator interpolator = new ArrayListInterpolator();
+        TreeMapInterpolator interpolator = new TreeMapInterpolator();
         Scanner in = new Scanner(System.in);
 
         // Set locale
@@ -93,8 +93,11 @@ public class TreeMapInterpolator extends Interpolator {
             interpolator.pushPoint(new Point2D(randX, randY));
         }
 
+        amountOfPoints++;
+        interpolator.pushPoint(new Point2D(1, 0));
+
         System.out.println("Sorted points:");
-        interpolator.sort();
+        // No manual sort as TreeMap sorts key-value pairs automatically
 
         for (int i = 0; i < amountOfPoints; i++) {
             System.out.println(interpolator.getPoint(i));

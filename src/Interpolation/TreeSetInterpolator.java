@@ -35,7 +35,7 @@ public class TreeSetInterpolator extends Interpolator {
         }
 
         Iterator<Point2D> iterator = set.iterator();
-        for (int i = 0; iterator.hasNext() && i <= index; i++) {
+        for (int i = 0; iterator.hasNext() && i < index; i++) {
             iterator.next();
         }
 
@@ -70,7 +70,7 @@ public class TreeSetInterpolator extends Interpolator {
     }
 
     public static void main(String[] args) {
-        ArrayListInterpolator interpolator = new ArrayListInterpolator();
+        TreeSetInterpolator interpolator = new TreeSetInterpolator();
         Scanner in = new Scanner(System.in);
 
         // Set locale

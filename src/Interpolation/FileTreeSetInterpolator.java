@@ -9,12 +9,12 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class FileArrayListInterpolator extends ArrayListInterpolator {
+public class FileTreeSetInterpolator extends TreeSetInterpolator {
 
-    private static final String FILE_TBL = FileArrayListInterpolator.class.getSimpleName() + "Original.csv";
-    private static final String FILE_TBL_INT = FileArrayListInterpolator.class.getSimpleName() + "Interpolated.csv";
+    private static final String FILE_TBL = FileTreeSetInterpolator.class.getSimpleName() + "Original.csv";
+    private static final String FILE_TBL_INT = FileTreeSetInterpolator.class.getSimpleName() + "Interpolated.csv";
 
-    FileArrayListInterpolator() {
+    FileTreeSetInterpolator() {
         super();
     }
 
@@ -51,7 +51,7 @@ public class FileArrayListInterpolator extends ArrayListInterpolator {
     }
 
     public static void main(String[] args) {
-        FileArrayListInterpolator interpolator = new FileArrayListInterpolator();
+        FileTreeSetInterpolator interpolator = new FileTreeSetInterpolator();
         Scanner in = new Scanner(System.in);
 
         // Set locale
