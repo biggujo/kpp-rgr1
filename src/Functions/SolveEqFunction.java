@@ -3,6 +3,9 @@ package Functions;
 import Interfaces.Evaluatable;
 import Math.NumMethods;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 public class SolveEqFunction implements Evaluatable {
     private LeftHand fun;
     private double tol;
@@ -36,10 +39,11 @@ public class SolveEqFunction implements Evaluatable {
         rootApprox = NumMethods.findRoot(rootApprox, tol, fun);
         return rootApprox;
     }
-    
+
     public static void main(String[] args) {
         SolveEqFunction fun = new SolveEqFunction();
-        java.util.Scanner in = new java.util.Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        in.useLocale(Locale.US);
         System.out.print("a: ");
         double a = in.nextDouble();
         System.out.print("xAppr: ");
