@@ -21,6 +21,14 @@ public class TreeSetInterpolator extends Interpolator {
         this.set = set;
     }
 
+    public TreeSetInterpolator(Point2D[] list) {
+        this();
+
+        for (Point2D point : list) {
+            pushPoint(point);
+        }
+    }
+
     public Point2D getPoint(int index) {
         if (index == 0) {
             return set.first();
@@ -45,9 +53,9 @@ public class TreeSetInterpolator extends Interpolator {
     }
 
     public Point2D popPoint() {
-        Point2D removedPoint = set.last();
+        Point2D removedPoint2D = set.last();
         set.remove(set.last());
-        return removedPoint;
+        return removedPoint2D;
     }
 
     public void clear() {
