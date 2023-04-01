@@ -118,6 +118,6 @@ public class TreeMapInterpolator extends Interpolator {
         System.out.printf("Average x: %f\n", avgX);
         System.out.printf("sin(x) = %f\n", correctValue);
         System.out.printf("interpolation(x) = %f\n", interpolatedValue);
-        System.out.printf("Difference: %f\n", diff);
+        System.out.printf("Difference: %g\n", diff);
     }
 }
