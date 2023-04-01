@@ -8,7 +8,7 @@ import java.util.*;
 
 public class TreeMapInterpolator extends Interpolator {
 
-    private TreeMap<Double, Double> map;
+    private final TreeMap<Double, Double> map;
 
     public TreeMapInterpolator() {
         map = new TreeMap<>();

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class ArrayListInterpolator extends Interpolator {
 
-    private ArrayList<Point2D> list;
+    private final ArrayList<Point2D> list;
 
     public ArrayListInterpolator() {
         this.list = new ArrayList<Point2D>();

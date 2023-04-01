@@ -5,19 +5,19 @@ import java.awt.*;
 
 public class JPanelInput {
 
-    private JPanel panel;
+    private final JPanel panel;
 
-    private JLabel labelFunctionName;
-    private JTextField textFieldFunction;
+    private final JLabel labelFunctionName;
+    private final JTextField textFieldFunction;
 
-    private JLabel labelStartX;
-    private JTextField textStartX;
+    private final JLabel labelStartX;
+    private final JTextField textStartX;
 
-    private JLabel labelEndX;
-    private JTextField textEndX;
+    private final JLabel labelEndX;
+    private final JTextField textEndX;
 
-    private JLabel labelStepX;
-    private JTextField textStepX;
+    private final JLabel labelStepX;
+    private final JTextField textStepX;
 
     public JPanelInput() {
         Font plainFont = new Font("Courier New", Font.PLAIN, 14);

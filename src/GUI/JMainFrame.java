@@ -12,16 +12,16 @@ import java.awt.*;
 
 public class JMainFrame extends JFrame {
 
-    private JPanel panel;
-    private JPanelInput panelInput;
-    private JPanelUtility panelUtility;
+    private final JPanel panel;
+    private final JPanelInput panelInput;
+    private final JPanelUtility panelUtility;
 
-    private JPanelFreeChart panelFreeChart;
+    private final JPanelFreeChart panelFreeChart;
 
-    private Parser parser;
+    private final Parser parser;
     private Expression function;
     private Expression derivative;
-    private Variable functionVar;
+    private final Variable functionVar;
 
     public JMainFrame() {
         parser = new Parser(Parser.STANDARD_FUNCTIONS);

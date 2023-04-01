@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class SolveEqFunction implements Evaluatable {
-    private LeftHand fun;
+    private final LeftHand fun;
     private double tol;
     private double rootApprox;
 

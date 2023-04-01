@@ -11,7 +11,7 @@ import java.util.TreeSet;
 
 public class TreeSetInterpolator extends Interpolator {
 
-    private TreeSet<Point2D> set;
+    private final TreeSet<Point2D> set;
 
     public TreeSetInterpolator() {
         set = new TreeSet<>();
