@@ -22,12 +22,15 @@ public class JMainFrame extends JFrame {
     private Expression function;
     private Expression derivative;
     private final Variable functionVar;
+    private final Variable functionParam;
 
     public JMainFrame() {
         parser = new Parser(Parser.STANDARD_FUNCTIONS);
 
         functionVar = new Variable("x");
+        functionParam = new Variable("a");
         parser.add(functionVar);
+        parser.add(functionParam);
 
         panel = new JPanel();
         panel.setBorder(new EmptyBorder(7, 7, 7, 7));
@@ -65,22 +68,26 @@ public class JMainFrame extends JFrame {
         seriesFunction.clear();
         seriesDerivative.clear();
 
+        double a = panelInput.getTextAText();
+
         for (double x = start; x < end; x += step) {
-            seriesFunction.add(x, calcFunction(x));
+            seriesFunction.add(x, calcFunction(x, a));
         }
 
         for (double x = start; x < end; x += step) {
-            seriesDerivative.add(x, calcDerivative(x));
+            seriesDerivative.add(x, calcDerivative(x, a));
         }
     }
 
-    private double calcFunction(double x) {
+    private double calcFunction(double x, double a) {
         functionVar.setVal(x);
+        functionParam.setVal(a);
         return function.getVal();
     }
 
-    private double calcDerivative(double x) {
+    private double calcDerivative(double x, double a) {
         functionVar.setVal(x);
+        functionParam.setVal(a);
         return derivative.getVal();
     }
 }
