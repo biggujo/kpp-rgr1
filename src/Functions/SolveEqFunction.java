@@ -50,6 +50,6 @@ public class SolveEqFunction implements Evaluatable {
         double xAppr = in.nextDouble();
         fun.setRootApprox(xAppr);
         double res = fun.evalf(a);
-        System.out.println("Корінь: " + res + "\tточність: " + fun.getTol() + "\tf(root): " + fun.checkRoot(res));
+        System.out.println("Root = " + res + ", precision = " + fun.getTol() + ", f(root) = " + fun.checkRoot(res));
     }
 }

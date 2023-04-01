@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
 public class FileTreeMapInterpolator extends TreeMapInterpolator {
 
     private static final String FILE_TBL = FileTreeMapInterpolator.class.getSimpleName() + "Original.csv";
-    private static final String FILE_TBL_INT = FileTreeMapInterpolator.class.getSimpleName() + "Interpolated.csv";
 
     public FileTreeMapInterpolator() {
         super();

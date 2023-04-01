@@ -1,9 +1,9 @@
-package GUI;
+import GUI.JMainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ApplicationGUI {
+public class ApplicationWordGUI {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {

@@ -3,14 +3,8 @@ package GUI;
 import edu.hws.jcm.data.Expression;
 import edu.hws.jcm.data.Parser;
 import edu.hws.jcm.data.Variable;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.ui.RectangleInsets;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -22,9 +16,7 @@ public class JMainFrame extends JFrame {
     private JPanelInput panelInput;
     private JPanelUtility panelUtility;
 
-    private JFreeChart chart;
-    private XYSeries seriesFunction;
-    private XYSeries seriesDerivative;
+    private JPanelFreeChart panelFreeChart;
 
     private Parser parser;
     private Expression function;
@@ -48,42 +40,23 @@ public class JMainFrame extends JFrame {
         panel.add(panelInput.getPanel(), BorderLayout.NORTH);
         panel.add(panelUtility.getPanel(), BorderLayout.SOUTH);
 
-        JFreeChart chart = createChart();
-        ChartPanel chartPanel = new ChartPanel(chart);
+        panelFreeChart = new JPanelFreeChart();
+        ChartPanel chartPanel = new ChartPanel(panelFreeChart.getChart());
         panel.add(chartPanel, BorderLayout.CENTER);
+
+        renderChart();
 
         panelUtility.getButtonPlot().addActionListener(e -> {
             renderChart();
         });
     }
 
-    private JFreeChart createChart() {
-        XYSeriesCollection dataset = new XYSeriesCollection();
-
-        seriesFunction = new XYSeries("Function");
-        seriesDerivative = new XYSeries("Derivative");
-
-        dataset.addSeries(seriesFunction);
-        dataset.addSeries(seriesDerivative);
-
-        renderChart();
-
-        chart = ChartFactory.createXYLineChart("", "X", "Y", dataset, PlotOrientation.VERTICAL, true, true, false);
-
-        // Customization
-        chart.setBackgroundPaint(Color.white);
-        XYPlot plot = (XYPlot) chart.getPlot();
-        plot.setBackgroundPaint(Color.lightGray);
-        plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
-        plot.setDomainGridlinePaint(Color.white);
-        plot.setRangeGridlinePaint(Color.white);
-
-        return chart;
-    }
-
     private void renderChart() {
         function = parser.parse(panelInput.getFunctionText());
         derivative = function.derivative(functionVar);
+
+        XYSeries seriesFunction = panelFreeChart.getSeriesFunction();
+        XYSeries seriesDerivative = panelFreeChart.getSeriesDerivative();
 
         double start = panelInput.getStartXText();
         double end = panelInput.getEndXText();

@@ -56,7 +56,7 @@ public class LeftHand implements Evaluatable {
         System.out.println("a = " + a);
         function.setA(a);
 
-        PrintWriter out = new PrintWriter(new FileWriter("LeftHand_A=" + a + ".dat"));
+        PrintWriter out = new PrintWriter(new FileWriter("LeftHand_A=" + a + ".csv"));
         out.println("x,y");
         for (double xCur = xMin; xCur <= xMax; xCur += xStep) {
             double curResult = function.evalf(xCur);
