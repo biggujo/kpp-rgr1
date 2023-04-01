@@ -14,7 +14,7 @@ public class FileTreeSetInterpolator extends TreeSetInterpolator {
     private static final String FILE_TBL = FileTreeSetInterpolator.class.getSimpleName() + "Original.csv";
     private static final String FILE_TBL_INT = FileTreeSetInterpolator.class.getSimpleName() + "Interpolated.csv";
 
-    FileTreeSetInterpolator() {
+    public FileTreeSetInterpolator() {
         super();
     }
 

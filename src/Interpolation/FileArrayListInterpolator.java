@@ -14,7 +14,7 @@ public class FileArrayListInterpolator extends ArrayListInterpolator {
     private static final String FILE_TBL = FileArrayListInterpolator.class.getSimpleName() + "Original.csv";
     private static final String FILE_TBL_INT = FileArrayListInterpolator.class.getSimpleName() + "Interpolated.csv";
 
-    FileArrayListInterpolator() {
+    public FileArrayListInterpolator() {
         super();
     }
 
