@@ -58,20 +58,22 @@ public class NumMethods {
         return res;
     }
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
-        // Перевірка методу розв'язування рівняння
-        double resEq1, resEq2;
+        double resEq1;
+        double resEq2;
+
         resEq1 = NumMethods.findRoot(1.0, 1.0e-7, x -> x * x - 4);
         resEq2 = NumMethods.findRoot(-1.0, 1.0e-7, x -> x * x - 4);
+
         System.out.println("Перший корінь: " + resEq1 + "\nДругий корінь: " + resEq2);
-        // Перевірка методу диференціювання
+
+
         ArrayListInterpolator fun = new ArrayListInterpolator();
+
         int num;
         double x = -0.5 * Math.PI;
         double step = 0.1;
+
         Scanner in = new Scanner(System.in);
         do {
             System.out.print("Кількість точок: ");
@@ -81,10 +83,12 @@ public class NumMethods {
             x += step;
             fun.pushPoint(new Point2D(x, Math.sin(x)));
         }
+
         x = 0.5 * (fun.getPoint(0).getX() + fun.getPoint(fun.pointsAmount() - 1).getX());
         double res = NumMethods.der(x, 1.0e-5, fun);
-        System.out.println("Чисельне значення sin'(" + x + ") = " + res);
-        System.out.println("Символьне значення sin'(" + x + ") = " + Math.cos(x));
-        System.out.println("Абсолютна помилка = " + Math.abs(res - Math.cos(x)));
+
+        System.out.println("Calculated sin'(" + x + ") = " + res);
+        System.out.println("Real sin'(" + x + ") = " + Math.cos(x));
+        System.out.println("Error = " + Math.abs(res - Math.cos(x)));
     }
 }
