@@ -3,15 +3,12 @@ package Interpolation;
 import Points.Point2D;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class FileArrayListInterpolator extends ArrayListInterpolator {
 
-    private static final String FILE_TBL = FileArrayListInterpolator.class.getSimpleName() + "Original.csv";
+    private static final String FILE_TBL = FileArrayListInterpolator.class.getSimpleName() + ".csv";
 
     public FileArrayListInterpolator() {
         super();
@@ -52,10 +49,6 @@ public class FileArrayListInterpolator extends ArrayListInterpolator {
     public static void main(String[] args) {
         FileArrayListInterpolator interpolator = new FileArrayListInterpolator();
         Scanner in = new Scanner(System.in);
-
-        // Set locale
-        DecimalFormatSymbols localeUS = new DecimalFormatSymbols(Locale.US);
-        DecimalFormat decimalFormat = new DecimalFormat("#.######", localeUS);
 
         int amountOfPoints = 0;
 

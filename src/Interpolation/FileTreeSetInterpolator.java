@@ -3,15 +3,12 @@ package Interpolation;
 import Points.Point2D;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class FileTreeSetInterpolator extends TreeSetInterpolator {
 
-    private static final String FILE_TBL = FileTreeSetInterpolator.class.getSimpleName() + "Original.csv";
+    private static final String FILE_TBL = FileTreeSetInterpolator.class.getSimpleName() + ".csv";
 
     public FileTreeSetInterpolator() {
         super();
@@ -52,10 +49,6 @@ public class FileTreeSetInterpolator extends TreeSetInterpolator {
     public static void main(String[] args) {
         FileTreeSetInterpolator interpolator = new FileTreeSetInterpolator();
         Scanner in = new Scanner(System.in);
-
-        // Set locale
-        DecimalFormatSymbols localeUS = new DecimalFormatSymbols(Locale.US);
-        DecimalFormat decimalFormat = new DecimalFormat("#.######", localeUS);
 
         int amountOfPoints = 0;
 
