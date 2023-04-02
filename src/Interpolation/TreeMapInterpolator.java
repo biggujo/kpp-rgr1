@@ -4,24 +4,21 @@ import Points.Point2D;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
-public class ArrayListInterpolator extends Interpolator {
+public class TreeMapInterpolator extends Interpolator {
 
-    private final ArrayList<Point2D> list;
+    private final TreeMap<Double, Double> map;
 
-    public ArrayListInterpolator() {
-        this.list = new ArrayList<Point2D>();
+    public TreeMapInterpolator() {
+        map = new TreeMap<>();
     }
 
-    public ArrayListInterpolator(ArrayList<Point2D> list) {
-        this.list = list;
+    public TreeMapInterpolator(TreeMap<Double, Double> map) {
+        this.map = map;
     }
 
-    public ArrayListInterpolator(Point2D[] list) {
+    public TreeMapInterpolator(Point2D[] list) {
         this();
 
         for (Point2D point : list) {
@@ -30,49 +27,51 @@ public class ArrayListInterpolator extends Interpolator {
     }
 
     public Point2D getPoint(int index) {
-        if (index < 0 || index >= list.size()) {
-            return null;
+        if (index == 0) {
+            Map.Entry<Double, Double> entry = map.firstEntry();
+            return new Point2D(entry.getKey(), entry.getValue());
         }
-        return list.get(index);
+
+        Iterator<Map.Entry<Double, Double>> iterator = map.entrySet().iterator();
+        for (int i = 0; iterator.hasNext() && i < index; i++) {
+            iterator.next();
+        }
+
+        Map.Entry<Double, Double> returnEntry = iterator.next();
+
+        return new Point2D(returnEntry.getKey(), returnEntry.getValue());
     }
 
-    public boolean setPoint(int index, Point2D point2D) {
-        if (index < 0 || index > list.size()) {
-            return false;
-        }
-
-        if (index == list.size()) {
-            pushPoint(point2D);
-            return true;
-        }
-
-        list.set(index, point2D);
+    public boolean setPoint(int index, Point2D pt) {
+        map.put(pt.getX(), pt.getY());
         return true;
     }
 
     public int pushPoint(Point2D point2D) {
-        list.add(point2D);
-        return list.size();
+        map.put(point2D.getX(), point2D.getY());
+        return map.size();
     }
 
     public Point2D popPoint() {
-        return list.remove(list.size() - 1);
+        Map.Entry<Double, Double> removedPointEntry = map.lastEntry();
+        Point2D removedPoint2D = new Point2D(removedPointEntry.getKey(), removedPointEntry.getValue());
+        map.remove(map.lastKey());
+        return removedPoint2D;
     }
 
     public void clear() {
-        list.clear();
+        map.clear();
     }
 
     public int pointsAmount() {
-        return list.size();
+        return map.size();
     }
 
     public void sort() {
-        Collections.sort(list);
     }
 
     public static void main(String[] args) {
-        ArrayListInterpolator interpolator = new FileArrayListInterpolator();
+        TreeMapInterpolator interpolator = new TreeMapInterpolator();
         Scanner in = new Scanner(System.in);
 
         // Set locale
@@ -94,8 +93,11 @@ public class ArrayListInterpolator extends Interpolator {
             interpolator.pushPoint(new Point2D(randX, randY));
         }
 
+        amountOfPoints++;
+        interpolator.pushPoint(new Point2D(1, 0));
+
         System.out.println("Sorted points:");
-        interpolator.sort();
+        // No manual sort as TreeMap sorts key-value pairs automatically
 
         for (int i = 0; i < amountOfPoints; i++) {
             System.out.println(interpolator.getPoint(i));

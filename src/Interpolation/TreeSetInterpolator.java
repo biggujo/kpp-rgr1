@@ -4,24 +4,24 @@ import Points.Point2D;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.TreeSet;
 
-public class ArrayListInterpolator extends Interpolator {
+public class TreeSetInterpolator extends Interpolator {
 
-    private final ArrayList<Point2D> list;
+    private final TreeSet<Point2D> set;
 
-    public ArrayListInterpolator() {
-        this.list = new ArrayList<Point2D>();
+    public TreeSetInterpolator() {
+        set = new TreeSet<>();
     }
 
-    public ArrayListInterpolator(ArrayList<Point2D> list) {
-        this.list = list;
+    public TreeSetInterpolator(TreeSet<Point2D> set) {
+        this.set = set;
     }
 
-    public ArrayListInterpolator(Point2D[] list) {
+    public TreeSetInterpolator(Point2D[] list) {
         this();
 
         for (Point2D point : list) {
@@ -30,49 +30,47 @@ public class ArrayListInterpolator extends Interpolator {
     }
 
     public Point2D getPoint(int index) {
-        if (index < 0 || index >= list.size()) {
-            return null;
+        if (index == 0) {
+            return set.first();
         }
-        return list.get(index);
+
+        Iterator<Point2D> iterator = set.iterator();
+        for (int i = 0; iterator.hasNext() && i < index; i++) {
+            iterator.next();
+        }
+
+        return iterator.next();
     }
 
-    public boolean setPoint(int index, Point2D point2D) {
-        if (index < 0 || index > list.size()) {
-            return false;
-        }
-
-        if (index == list.size()) {
-            pushPoint(point2D);
-            return true;
-        }
-
-        list.set(index, point2D);
+    public boolean setPoint(int i, Point2D pt) {
+        set.add(pt);
         return true;
     }
 
-    public int pushPoint(Point2D point2D) {
-        list.add(point2D);
-        return list.size();
+    public int pushPoint(Point2D pt) {
+        set.add(pt);
+        return set.size();
     }
 
     public Point2D popPoint() {
-        return list.remove(list.size() - 1);
+        Point2D removedPoint2D = set.last();
+        set.remove(set.last());
+        return removedPoint2D;
     }
 
     public void clear() {
-        list.clear();
+        set.clear();
     }
 
     public int pointsAmount() {
-        return list.size();
+        return set.size();
     }
 
     public void sort() {
-        Collections.sort(list);
     }
 
     public static void main(String[] args) {
-        ArrayListInterpolator interpolator = new FileArrayListInterpolator();
+        TreeSetInterpolator interpolator = new TreeSetInterpolator();
         Scanner in = new Scanner(System.in);
 
         // Set locale

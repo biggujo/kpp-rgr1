@@ -17,6 +17,20 @@ public class FFunction implements Evaluatable {
         this.a = a;
     }
 
+    @Override
+    public double evalf(double x) {
+        return Math.exp(-a * x * x) * Math.sin(x);
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+
     public static void main(String[] args) {
 
         FFunction function = new FFunction();
@@ -24,7 +38,7 @@ public class FFunction implements Evaluatable {
         Scanner in = new Scanner(System.in);
         in.useLocale(Locale.US);
 
-        System.out.println("Math.exp(-a * x * x) * Math.sin(x)");
+        System.out.println("Math.exp(-a * x^2) * Math.sin(x)");
 
         System.out.println("Test 1");
 
@@ -62,19 +76,4 @@ public class FFunction implements Evaluatable {
             System.out.printf("x = %f, res = %f\n", xCur, function.evalf(x));
         }
     }
-
-    @Override
-    public double evalf(double x) {
-        return Math.exp(-a * x * x) * Math.sin(x);
-    }
-
-    public double getA() {
-        return a;
-    }
-
-    public void setA(double a) {
-        this.a = a;
-    }
-
-
 }

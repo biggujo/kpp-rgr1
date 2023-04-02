@@ -6,18 +6,18 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class FileArrayListInterpolator extends ArrayListInterpolator {
+public class FileTreeMapInterpolator extends TreeMapInterpolator {
 
-    private static final String FILE_TBL = FileArrayListInterpolator.class.getSimpleName() + ".csv";
+    private static final String FILE_TBL = FileTreeMapInterpolator.class.getSimpleName() + ".csv";
 
-    public FileArrayListInterpolator() {
+    public FileTreeMapInterpolator() {
         super();
     }
 
     public void readFromFile(String filename) throws IOException {
         FileReader fileReader = new FileReader(filename);
         BufferedReader in = new BufferedReader(fileReader);
-
+        
         String curLine = in.readLine(); // pass header
         clear();
 
@@ -47,7 +47,7 @@ public class FileArrayListInterpolator extends ArrayListInterpolator {
     }
 
     public static void main(String[] args) {
-        FileArrayListInterpolator interpolator = new FileArrayListInterpolator();
+        FileTreeMapInterpolator interpolator = new FileTreeMapInterpolator();
         Scanner in = new Scanner(System.in);
 
         int amountOfPoints = 0;

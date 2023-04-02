@@ -6,11 +6,11 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class FileArrayListInterpolator extends ArrayListInterpolator {
+public class FileTreeSetInterpolator extends TreeSetInterpolator {
 
-    private static final String FILE_TBL = FileArrayListInterpolator.class.getSimpleName() + ".csv";
+    private static final String FILE_TBL = FileTreeSetInterpolator.class.getSimpleName() + ".csv";
 
-    public FileArrayListInterpolator() {
+    public FileTreeSetInterpolator() {
         super();
     }
 
@@ -47,7 +47,7 @@ public class FileArrayListInterpolator extends ArrayListInterpolator {
     }
 
     public static void main(String[] args) {
-        FileArrayListInterpolator interpolator = new FileArrayListInterpolator();
+        FileTreeSetInterpolator interpolator = new FileTreeSetInterpolator();
         Scanner in = new Scanner(System.in);
 
         int amountOfPoints = 0;
