@@ -34,21 +34,12 @@ public class ApplicationWordInput {
         parser.add(varX);
         parser.add(varA);
 
-        Expression function;
-        Expression derivative;
+        Expression function = null;
+        Expression derivative = null;
 
         // END Math
 
-        System.out.print("Input maximal precision: ");
-        int precision = in.nextInt();
-        in.nextLine();
-
-        if (precision < 0) {
-            System.out.println("Input error!");
-            System.exit(1);
-        }
-
-        DecimalFormat decimalFormat = new DecimalFormat("###." + "#".repeat(precision));
+        DecimalFormat decimalFormat = new DecimalFormat("###.####");
 
         System.out.println("(input \"0\" to save last results & exit)");
         while (true) {
@@ -59,8 +50,13 @@ public class ApplicationWordInput {
                 break;
             }
 
-            function = parser.parse(input);
-            derivative = function.derivative(varX);
+            try {
+                function = parser.parse(input);
+                derivative = function.derivative(varX);
+            } catch (Exception e) {
+                System.out.println("Parse error!");
+                System.exit(1);
+            }
 
             System.out.println("Function: " + function);
             System.out.println("Derivative: " + derivative);
@@ -112,21 +108,19 @@ public class ApplicationWordInput {
             }
 
             System.out.println("Function results:");
-            point2DArrayListFunc.forEach(p -> {
-                System.out.println("x = " + decimalFormat.format(p.getX()) + ", y = " + decimalFormat.format(p.getY()));
-            });
+            point2DArrayListFunc.forEach(p -> System.out.println("x = " + decimalFormat.format(p.getX()) + ", y = "
+                    + decimalFormat.format(p.getY())));
 
             System.out.println("Derivative results:");
-            point2DArrayListDeriv.forEach(p -> {
-                System.out.println("x = " + decimalFormat.format(p.getX()) + ", y = " + decimalFormat.format(p.getY()));
-            });
+            point2DArrayListDeriv.forEach(p -> System.out.println("x = " + decimalFormat.format(p.getX()) + ", y = "
+                    + decimalFormat.format(p.getY())));
 
             in.nextLine();
         }
 
         try {
             Point2DArrayListDriver.writeToFile(point2DArrayListFunc, 2, FILE_NAME_FUNC_RES);
-            Point2DArrayListDriver.writeToFile(point2DArrayListFunc, 2, FILE_NAME_DERIV_RES);
+            Point2DArrayListDriver.writeToFile(point2DArrayListDeriv, 2, FILE_NAME_DERIV_RES);
 
             System.out.println("File: " + FILE_NAME_FUNC_RES);
             System.out.println("File: " + FILE_NAME_DERIV_RES);

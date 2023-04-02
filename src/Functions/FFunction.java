@@ -38,7 +38,7 @@ public class FFunction implements Evaluatable {
         Scanner in = new Scanner(System.in);
         in.useLocale(Locale.US);
 
-        System.out.println("Math.exp(-a * x * x) * Math.sin(x)");
+        System.out.println("Math.exp(-a * x^2) * Math.sin(x)");
 
         System.out.println("Test 1");
 
